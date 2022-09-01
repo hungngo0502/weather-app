@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { useState, useEffect } from "react";
 
 const api = {
@@ -20,11 +19,11 @@ function App() {
       //process
       try {
         const url = `${api.base}weather?q=${searchCity}&units=metric&APPID=${api.key}`;
-        const res = await fetch(url);
-        const data = await res.json();
-        if (res.ok) {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (response.ok) {
           setWeatherInfor(
-            `${data.name}, ${data.sys.country}, ${data.weather[0].description}, ${data.main.temp}`
+            `${data.name}, ${data.sys.country} ${data.weather[0].description}, ${data.main.temp}`
           );
           // console.log(data);
           setErrorMessage("");
